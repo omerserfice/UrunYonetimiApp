@@ -1,0 +1,38 @@
+﻿@using UrunYonetimDAL.DTO.Customer
+@model List<GetCustomerListDto>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Müşteri Sayfası</h1>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th scope="col">Müşteri Adı</th>
+            <th scope="col">Telefon</th>
+            <th scope="col">Adres</th>
+            <th>Ürün</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.CustomerName</td>
+                <td>@item.PhoneNumber</td>
+                <td>@item.Address</td>
+               <td>
+                   @foreach (var item2 in item.Products)
+                  {
+                      <p>@item2.PName</p>
+                  }
+               </td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>
+
