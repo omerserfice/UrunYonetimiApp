@@ -35,12 +35,26 @@ namespace UrunYonetim.Business.Concrete
 
         public int DeleteCustomer(int customerId)
         {
-            throw new NotImplementedException();
+            var customer = _urunContext.Customers.Where(p => !p.IsDeleted && p.Id == customerId).FirstOrDefault();
+           
+            customer.IsDeleted = true;
+            _urunContext.Customers.Update(customer);
+            return _urunContext.SaveChanges();
         }
 
         public GetCustomerDto GetCustomerById(int customerId)
         {
-            throw new NotImplementedException();
+            var customer = _urunContext.Customers.Where(p => !p.IsDeleted && p.Id == customerId)
+                .Select(p => new GetCustomerDto
+                {
+                    Id = p.Id,
+                    CustomerName = p.CustomerName,
+                    PhoneNumber = p.PhoneNumber,
+                    Address = p.Address,
+                   
+                   
+                }).FirstOrDefault();
+            return customer;
         }
         
         public List<GetCustomerListDto> GetCustomerList()
@@ -49,6 +63,7 @@ namespace UrunYonetim.Business.Concrete
                 
                 .Select(p => new GetCustomerListDto
                 {
+                    Id = p.Id,
                     CustomerName = p.CustomerName,
                     PhoneNumber=p.PhoneNumber,
                     Address=p.Address,
@@ -63,7 +78,12 @@ namespace UrunYonetim.Business.Concrete
 
         public int UpdateCustomer(UpdateCustomerDto updateCustomerDto, int id)
         {
-            throw new NotImplementedException();
+            var currentCustomer = _urunContext.Customers.Where(p=>!p.IsDeleted && p.Id == id).FirstOrDefault();
+            currentCustomer.CustomerName = updateCustomerDto.CustomerName;
+            currentCustomer.PhoneNumber = updateCustomerDto.PhoneNumber;
+            currentCustomer.Address = updateCustomerDto.Address;
+            _urunContext.Customers.Update(currentCustomer);
+            return _urunContext.SaveChanges();
         }
     }
 }

@@ -29,6 +29,8 @@ namespace UrunYonetimiApp
             services.AddControllersWithViews();
             services.AddDbContext<urunContext>();
             services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IProductCustomerService, ProductCustomerService>();
             
         }
 

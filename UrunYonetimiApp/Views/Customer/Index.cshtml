@@ -1,11 +1,21 @@
 ﻿@using UrunYonetimDAL.DTO.Customer
 @model List<GetCustomerListDto>
+
+
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UrunLayout.cshtml";
 }
 
-<h1>Müşteri Sayfası</h1>
-<table class="table">
+<h2>Müşteri Listesi</h2>
+
+<div class="d-flex flex-row-reverse bd-highlight">
+    <div class="p-2 bd-highlight">
+        <a href="/Customer/AddCustomer" class="btn btn-icon waves-effect waves-light btn-success m-b-5 btn-sm">Müşteri Ekle <i class="fa fa-plus"></i> </a>
+    </div>
+
+</div>
+<table class="table table-striped">
     <thead>
         <tr>
 
@@ -13,26 +23,32 @@
             <th scope="col">Telefon</th>
             <th scope="col">Adres</th>
             <th>Ürün</th>
+            <th>İşlemler</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-
                 <td>@item.CustomerName</td>
                 <td>@item.PhoneNumber</td>
                 <td>@item.Address</td>
-               <td>
-                   @foreach (var item2 in item.Products)
-                  {
-                      <p>@item2.PName</p>
-                  }
-               </td>
+                <td>
+                    @foreach (var item2 in item.Products)
+                    {
+                        <ul class="list-group">
+                            <li class="list-group-item">@item2.PName</li>
+                           
+                        </ul>
+                    }
+                </td>
+                <td>
+                    <a href="/Customer/DeleteCustomer/@item.Id" class="btn btn-icon waves-effect waves-light btn-danger m-b-5 btn-sm"> <i class="fa fa-trash"></i> </a>
+                    <a href="/Customer/DetailCustomer/@item.Id" class="btn btn-icon waves-effect waves-light btn-warning m-b-5 btn-sm"> <i class="fa fa-edit"></i> </a>
+                </td>
             </tr>
-
         }
-
     </tbody>
 </table>
+
 

@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "AddProduct";
+    Layout = "~/Views/Shared/UrunLayout.cshtml";
+}
+
+<hr />
+<h1>Ürün Ekleme Sayfası</h1>
+
+<form asp-action="AddProduct" asp-controller="Product" method="post">
+    <div class="form-group row">
+        <label class="col-lg-3 col-form-label text-right font-weight-bold">Ürün Adı</label>
+        <div class="col-lg-6">
+            <input type="text" name="ProductName" class="form-control">
+           
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-lg-3 col-form-label text-right font-weight-bold">Fiyatı</label>
+        <div class="col-lg-6">
+            <input type="text" name="Price" class="form-control">
+          
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-lg-3 col-form-label text-right font-weight-bold">Miktar</label>
+        <div class="col-lg-6">
+            <input type="text" name="Quantity" class="form-control">
+            
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-lg-3 col-form-label text-right font-weight-bold"></label>
+        <div class="col-lg-6">
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-success btn-sm">Ürün Ekle</button>&nbsp;
+                <a href="/Product/Index/" class="btn btn-danger btn-sm">Vazgeç</a>
+            </div>
+        </div>
+    </div>
+
+</form>

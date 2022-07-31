@@ -30,5 +30,26 @@ namespace UrunYonetimiApp.Controllers
             _customerService.AddCustomer(addCustomerDto);
            return RedirectToAction("Index","Customer");
         }
+       
+        public IActionResult DeleteCustomer(int id)
+        {
+            _customerService.DeleteCustomer(id);
+            return RedirectToAction("Index", "Customer");
+        }
+
+        public IActionResult DetailCustomer(int id)
+        {
+            var customer = _customerService.GetCustomerById(id);
+
+            return View(customer);
+        }
+        [HttpPost]
+        public IActionResult UpdateCustomer(UpdateCustomerDto updateCustomerDto, int id)
+        {
+            _customerService.UpdateCustomer(updateCustomerDto, id);
+            return RedirectToAction("DetailCustomer", "Customer", new { id = id });
+        }
+
+       
     }
 }

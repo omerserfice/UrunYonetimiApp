@@ -1,0 +1,45 @@
+﻿@using UrunYonetimDAL.DTO.Product
+@model List<GetProductListDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UrunLayout.cshtml";
+}
+
+<h2>Ürün Listesi</h2>
+
+<div class="d-flex flex-row-reverse bd-highlight">
+  <div class="p-2 bd-highlight">
+      <a href="/Product/AddProduct" class="btn btn-icon waves-effect waves-light btn-success m-b-5 btn-sm">Ürün Ekle <i class="fa fa-plus"></i> </a>
+  </div>
+
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+
+            <th scope="col">Ürün Adı</th>
+            <th scope="col">Fiyat</th>
+            <th scope="col">Stok</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.ProductName</td>
+                <td>@item.Price ₺</td>
+                <td>@item.Quantity</td>
+               <td>
+                     <a href="/Product/DeleteProduct/@item.Id" class="btn btn-icon waves-effect waves-light btn-danger m-b-5 btn-sm"> <i class="fa fa-trash"></i> </a>
+                     <a href="/Product/DetailProduct/@item.Id" class="btn btn-icon waves-effect waves-light btn-warning m-b-5 btn-sm"> <i class="fa fa-edit"></i> </a>
+                     <a href="/Product/OutputProductDetail/@item.Id" class="btn btn-icon waves-effect waves-light btn-dark m-b-5 btn-sm"> <i class="fa fa-arrow-right"></i> </a>
+               </td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>

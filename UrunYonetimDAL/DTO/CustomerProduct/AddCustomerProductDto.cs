@@ -10,5 +10,6 @@ namespace UrunYonetimDAL.DTO.CustomerProduct
     {
         public int CustomerId { get; set; }
         public int ProductId { get; set; }
+        public int Quantity { get; set; }
     }
 }

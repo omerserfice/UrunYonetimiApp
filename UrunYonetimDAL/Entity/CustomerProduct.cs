@@ -14,6 +14,8 @@ namespace UrunYonetimDAL.Entity
         public Customer CustomerFK { get; set; }
         public int ProductId { get; set; }
         public Product ProductFK { get; set; }
+        public int Quantity { get; set; }
+      
         public bool IsDeleted { get; set; }
     }
 }

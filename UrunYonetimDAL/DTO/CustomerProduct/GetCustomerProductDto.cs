@@ -8,7 +8,7 @@ namespace UrunYonetimDAL.DTO.CustomerProduct
 {
     public class GetCustomerProductDto
     {
-        public string CustomerName { get; set; }
-        public string ProductName { get; set; }
+        public int Id { get; set; }
+       
     }
 }
